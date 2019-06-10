@@ -1,0 +1,16 @@
+<armature>
+    <bone name="head" parent="chest"/>
+    <bone name="chest" children="head"/>
+
+    <animation fps="8">
+        <frame index="0">
+            <bone-state name="head" x="0" y="10"/>
+            <bone-state name="chest" x="0" y="-10"/>
+        </frame>
+
+        <frame index="1">
+            <bone-state name="head" x="0" y="20"/>
+            <bone-state name="chest" x="0" y="0"/>
+        </frame>
+    </animation>
+</armature>

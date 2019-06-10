@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'com.thoughtworks.xstream:xstream:1.4.11.1'
+    }
+}
+
+group 'deflatedpickle'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+project("sad") {
+}
+
+project("example") {
+    dependencies {
+        compile project(":sad")
+    }
+}
