@@ -9,15 +9,10 @@ import java.util.List;
 
 @XStreamAlias("animation")
 public class XMLAnimation {
-    @XStreamAlias("fps")
-    @XStreamAsAttribute
-    public Integer fps;
-
     @XStreamImplicit(itemFieldName = "frame")
     public List<XMLFrame> frameList;
 
-    public XMLAnimation(Integer fps, XMLFrame... frames) {
-        this.fps = fps;
+    public XMLAnimation(XMLFrame... frames) {
         this.frameList = Arrays.asList(frames);
     }
 }

@@ -2,6 +2,7 @@ package com.deflatedpickle.sad.xml;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,17 +13,11 @@ public class XMLBone {
     @XStreamAsAttribute
     public String name;
 
-    @XStreamAlias("parent")
-    @XStreamAsAttribute
-    public String parent;
+    @XStreamImplicit(itemFieldName = "bone")
+    public List<XMLBone> children;
 
-    @XStreamAlias("children")
-    @XStreamAsAttribute
-    public String children;
-
-    public XMLBone(String name, String parent, String children) {
+    public XMLBone(String name, XMLBone... children) {
         this.name = name;
-        this.parent = parent;
-        this.children = children;
+        this.children = Arrays.asList(children);
     }
 }
