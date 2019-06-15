@@ -1,5 +1,8 @@
 plugins {
     id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.30'
+    id 'application'
+    id "com.github.johnrengelman.shadow" version "4.0.4"
 }
 
 allprojects {
@@ -25,5 +28,23 @@ project("sad") {
 project("example") {
     dependencies {
         compile project(":sad")
+        compile project(":editor")
+    }
+}
+
+project("editor") {
+    apply plugin: 'kotlin'
+
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+        compile project(":sad")
+    }
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "1.8"
     }
 }

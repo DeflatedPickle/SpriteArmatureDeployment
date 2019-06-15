@@ -3,9 +3,9 @@ package com.deflatedpickle.sad;
 import java.util.HashMap;
 
 public class StaticBone {
-    String name;
-    HashMap<String, StaticBone> children = new HashMap<>();
-    HashMap<String, Object> properties = new HashMap<>();
+    public String name;
+    public HashMap<String, StaticBone> children = new HashMap<>();
+    public HashMap<String, Object> properties = new HashMap<>();
 
     public StaticBone(String name) {
         this.name = name;

@@ -1,6 +1,6 @@
 package com.deflatedpickle.sad;
 
-public class Main {
+public class MainSad {
     public static void main(String []args) {
         StaticArmature armature = new StaticArmature(ClassLoader.getSystemClassLoader().getResource("armature.xml"));
 

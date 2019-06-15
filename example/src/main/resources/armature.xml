@@ -12,7 +12,7 @@
                 <bone-state name="head" x="0" y="10"/>
 
                 <bone-state name="left_arm" x="-10" y="10">
-                    <bone-state name="hand" x="0" y="0"/>
+                    <bone-state name="hand" x="-15" y="10"/>
                 </bone-state>
             </bone-state>
         </frame>
@@ -22,7 +22,7 @@
                 <bone-state name="head" x="0" y="15"/>
 
                 <bone-state name="left_arm" x="-10" y="10">
-                    <bone-state name="hand" x="0" y="0"/>
+                    <bone-state name="hand" x="-15" y="10"/>
                 </bone-state>
             </bone-state>
         </frame>

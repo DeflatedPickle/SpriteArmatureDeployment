@@ -1,2 +1,2 @@
 rootProject.name = "sad"
-include "sad", "example"
+include "sad", "example", "editor"
