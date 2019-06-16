@@ -39,7 +39,7 @@ class ArmaturePanel : JPanel() {
         }
     }
 
-    fun loopBones(bone: StaticBone, parentBone: DisplayBone?) {
+    private fun loopBones(bone: StaticBone, parentBone: DisplayBone?) {
         val children = bone.children
 
         val displayBone = DisplayBone(bone, parentBone)

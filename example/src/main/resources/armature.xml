@@ -19,7 +19,7 @@
 
         <frame>
             <bone-state name="chest" x="0" y="0">
-                <bone-state name="head" x="0" y="-5"/>
+                <bone-state name="head" x="0" y="-7"/>
 
                 <bone-state name="left_arm" x="-5" y="0">
                     <bone-state name="hand" x="-5" y="0"/>
