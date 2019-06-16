@@ -54,24 +54,7 @@ public class StaticArmature {
 
                 StaticBone bone = new StaticBone(xmlBone.name);
                 boneList.put(bone.name, bone);
-
-                HashMap<String, Object> boneProperties = new HashMap<>();
-
-                Integer x;
-                Integer y;
-
-                if (parentBone == null) {
-                    x = xmlBoneState.x;
-                    y = xmlBoneState.y;
-                }
-                else {
-                    x = xmlBoneState.x + (int) parentBone.properties.get("x");
-                    y = xmlBoneState.y + (int) parentBone.properties.get("y");
-            }
-
-                boneProperties.put("x", x);
-                boneProperties.put("y", y);
-                bone.properties = boneProperties;
+                bone.properties = setBoneProperties(parentBone, xmlBoneState);
 
                 if (xmlBone.children != null) {
                     bone.children = iterateBones(bone, xmlBone.children, xmlFrameList, xmlBoneState.boneStateList);
@@ -79,7 +62,7 @@ public class StaticArmature {
 
                 frameMap.put(frame, bone);
             }
-            
+
             bones.put(xmlBone.name, frameMap);
         }
 
@@ -94,24 +77,7 @@ public class StaticArmature {
             XMLBoneState xmlBoneState = xmlBoneStateList.get(i);
 
             StaticBone bone = new StaticBone(xmlBone.name);
-
-            HashMap<String, Object> boneProperties = new HashMap<>();
-
-            Integer x;
-            Integer y;
-
-            if (parentBone == null) {
-                x = xmlBoneState.x;
-                y = xmlBoneState.y;
-            }
-            else {
-                x = xmlBoneState.x + (int) parentBone.properties.get("x");
-                y = xmlBoneState.y + (int) parentBone.properties.get("y");
-            }
-
-            boneProperties.put("x", x);
-            boneProperties.put("y", y);
-            bone.properties = boneProperties;
+            bone.properties = setBoneProperties(parentBone, xmlBoneState);
 
             if (xmlBone.children != null) {
                 bone.children = iterateFrames(bone, xmlBone.children, xmlBoneState.boneStateList);
@@ -121,5 +87,26 @@ public class StaticArmature {
         }
 
         return boneList;
+    }
+
+    private HashMap<String, Object> setBoneProperties(StaticBone parentBone, XMLBoneState xmlBoneState) {
+        HashMap<String, Object> boneProperties = new HashMap<>();
+
+        Integer x;
+        Integer y;
+
+        if (parentBone == null) {
+            x = xmlBoneState.x;
+            y = xmlBoneState.y;
+        }
+        else {
+            x = xmlBoneState.x + (int) parentBone.properties.get("x");
+            y = xmlBoneState.y + (int) parentBone.properties.get("y");
+        }
+
+        boneProperties.put("x", x);
+        boneProperties.put("y", y);
+
+        return boneProperties;
     }
 }
