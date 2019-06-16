@@ -9,7 +9,7 @@ public class MainSuds {
         ApplicationWindow applicationWindow = new ApplicationWindow();
         applicationWindow.getArmaturePanel().setArmature(armature);
 
-        applicationWindow.pack();
+        // applicationWindow.pack();
         applicationWindow.setVisible(true);
     }
 }

@@ -25,23 +25,21 @@ class ArmaturePanel : JPanel() {
 
         val centre = Point(this.width / 2, this.height / 2)
 
-        for ((k, v) in armature.bones) {
-            g2D.color = Color.BLUE
-            val children = (v[frame] as StaticBone).children
-            val properties = (v[frame] as StaticBone).properties
+        for (i in armature.frames[frame].values) {
+            val children = i.children
+            val properties = i.properties
 
-            val circleX = (centre.x + circleSize) + properties["x"] as Int * scaleFactor
-            val circleY = (centre.y - circleSize * 4) + properties["y"] as Int * scaleFactor
+            val circleX = (centre.x - circleSize / 2) + properties["x"] as Int * scaleFactor
+            val circleY = (centre.y - circleSize / 2) + properties["y"] as Int * scaleFactor
+
+            val textX = circleX - (g2D.fontMetrics.stringWidth(i.name) / 4)
+            val textY = circleY + (g2D.fontMetrics.height)
+
+            g2D.color = Color.BLUE
             g2D.fillOval(circleX, circleY, circleSize, circleSize)
 
-            val textX = circleX - (g2D.fontMetrics.stringWidth(k) / 4)
-            val textY = circleY + (g2D.fontMetrics.height)
             g2D.color = Color.ORANGE
-            g2D.drawString(k, textX, textY)
-
-            for ((kk, vv) in children) {
-                // TODO: Draw lines to each child, iteratively
-            }
+            g2D.drawString(i.name, textX, textY)
         }
     }
 }

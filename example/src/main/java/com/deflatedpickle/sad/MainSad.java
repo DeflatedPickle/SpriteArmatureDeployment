@@ -7,7 +7,14 @@ public class MainSad {
         System.out.println(armature.bones.get("chest").get(0));
         System.out.println(armature.bones.get("chest").get(0).children.get("head"));
 
-        System.out.println(armature.bones.get("chest").get(0).children.get("left_arm"));
-        System.out.println(armature.bones.get("chest").get(0).children.get("left_arm").children.get("hand"));
+        System.out.println("----------------");
+
+        System.out.println(armature.frames.get(0).get("chest"));
+        System.out.println(armature.frames.get(0).get("chest").children.get("head"));
+
+        System.out.println("------");
+
+        System.out.println(armature.frames.get(1).get("chest"));
+        System.out.println(armature.frames.get(1).get("chest").children.get("head"));
     }
 }
