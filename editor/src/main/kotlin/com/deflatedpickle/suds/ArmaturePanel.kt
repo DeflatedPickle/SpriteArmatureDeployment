@@ -12,6 +12,8 @@ class ArmaturePanel : JPanel() {
     var scaleFactor = 10
     val circleSize = 2 * scaleFactor
 
+    lateinit var centre: Point
+
     init {
         this.background = Color.WHITE
     }
@@ -23,23 +25,33 @@ class ArmaturePanel : JPanel() {
         val originalFont = g2D.font
         g2D.font = Font(originalFont.fontName, Font.BOLD, 14)
 
-        val centre = Point(this.width / 2, this.height / 2)
+        centre = Point(this.width / 2, this.height / 2)
 
         for (i in armature.frames[frame].values) {
-            val children = i.children
-            val properties = i.properties
+            loopBones(g2D, i)
+        }
+    }
 
-            val circleX = (centre.x - circleSize / 2) + properties["x"] as Int * scaleFactor
-            val circleY = (centre.y - circleSize / 2) + properties["y"] as Int * scaleFactor
+    fun loopBones(g2D: Graphics2D, bone: StaticBone) {
+        val children = bone.children
+        val properties = bone.properties
 
-            val textX = circleX - (g2D.fontMetrics.stringWidth(i.name) / 4)
-            val textY = circleY + (g2D.fontMetrics.height)
+        val circleX = (centre.x - circleSize / 2) + properties["x"] as Int * scaleFactor
+        val circleY = (centre.y - circleSize / 2) + properties["y"] as Int * scaleFactor
 
-            g2D.color = Color.BLUE
-            g2D.fillOval(circleX, circleY, circleSize, circleSize)
+        val textX = circleX - (g2D.fontMetrics.stringWidth(bone.name) / 4)
+        val textY = circleY + (g2D.fontMetrics.height)
 
-            g2D.color = Color.ORANGE
-            g2D.drawString(i.name, textX, textY)
+        g2D.color = Color.BLUE
+        g2D.fillOval(circleX, circleY, circleSize, circleSize)
+
+        g2D.color = Color.ORANGE
+        g2D.drawString(bone.name, textX, textY)
+
+        if (bone.children != null) {
+            for (i in bone.children.values) {
+                loopBones(g2D, i)
+            }
         }
     }
 }
