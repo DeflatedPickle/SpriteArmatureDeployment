@@ -33,7 +33,8 @@ class DisplayBone(val bone: StaticBone, var parentBone: DisplayBone?) {
 
             g2D.color = Color.GREEN
             g2D.stroke = BasicStroke(4f)
-            g2D.drawLine(circleX, circleY, parentCircleX, parentCircleY)
+            g2D.drawLine(circleX + (size.x * scaleFactor) / 2, circleY + (size.y * scaleFactor) / 2,
+                parentCircleX + (parentBone!!.size.x * scaleFactor) / 2, parentCircleY + (parentBone!!.size.y * scaleFactor) / 2)
         }
     }
 }
