@@ -7,6 +7,9 @@ class DisplayBone(val bone: StaticBone, var parentBone: DisplayBone?) {
     var size: Point
     var location: Point
 
+    val centeredLocation = Point()
+    val centeredSize = Point()
+
     init {
         val properties = bone.properties
         location = Point(properties["x"] as Int, properties["y"] as Int)
@@ -17,6 +20,8 @@ class DisplayBone(val bone: StaticBone, var parentBone: DisplayBone?) {
     fun draw(g2D: Graphics2D, centre: Point, scaleFactor: Int) {
         val circleX = (centre.x - (size.x * scaleFactor) / 2) + location.x * scaleFactor
         val circleY = (centre.y - (size.y * scaleFactor) / 2) + location.y * scaleFactor
+        centeredLocation.setLocation(circleX, circleY)
+        centeredSize.setLocation(size.x * scaleFactor, size.y * scaleFactor)
 
         val textX = circleX - (g2D.fontMetrics.stringWidth(bone.name) / 4)
         val textY = circleY + (g2D.fontMetrics.height)

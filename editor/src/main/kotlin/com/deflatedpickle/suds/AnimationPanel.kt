@@ -16,11 +16,10 @@ class AnimationPanel(applicationWindow: ApplicationWindow) : JPanel() {
                 previousFrameButton.isEnabled = true
 
                 applicationWindow.armaturePanel.frame++
-                applicationWindow.armaturePanel.boneList.clear()
 
                 applicationWindow.armaturePanel.repaint()
 
-                if (applicationWindow.armaturePanel.frame == applicationWindow.armaturePanel.armature.frames.size - 1) {
+                if (applicationWindow.armaturePanel.frame == applicationWindow.armaturePanel.armature!!.frames.size - 1) {
                     this.isEnabled = false
                 }
             }
@@ -33,7 +32,6 @@ class AnimationPanel(applicationWindow: ApplicationWindow) : JPanel() {
                 nextFrameButton.isEnabled = true
 
                 applicationWindow.armaturePanel.frame--
-                applicationWindow.armaturePanel.boneList.clear()
 
                 applicationWindow.armaturePanel.repaint()
 
